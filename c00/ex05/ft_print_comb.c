@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 17:05:47 by kchiang           #+#    #+#             */
-/*   Updated: 2025/02/27 21:32:57 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/02/28 11:47:12 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,45 +15,37 @@
 // function to print 3 digits in ascending order
 void	print_digit(char h, char t, char o)
 {
-	char	comma;
-	char	space;
-
-	comma = ',';
-	space = ' ';
 	if ((h < t) && (t < o))
 	{
 		write(1, &h, 1);
 		write(1, &t, 1);
 		write(1, &o, 1);
 		if (!((h == '7') && (t == '8') && (o == '9')))
-		{
-			write(1, &comma, 1);
-			write(1, &space, 1);
-		}
+			write(1, ", ", 2);
 	}
 }
 
 // loop function for print_digit
 void	ft_print_comb(void)
 {
-	char	o;
-	char	t;
-	char	h;
+	char	one;
+	char	ten;
+	char	hundred;
 
-	h = '0';
-	t = '1';
-	o = '2';
-	while (h <= '7')
+	hundred = '0';
+	ten = '1';
+	one = '2';
+	while (hundred <= '7')
 	{
-		while (t <= '8')
+		while (ten <= '8')
 		{
-			while (o <= '9')
+			while (one <= '9')
 			{
-				print_digit(h, t, o);
-				o++;
+				print_digit(hundred, ten, one);
+				one++;
 			}
-			o = (t++) + 1;
+			one = (ten++) + 1;
 		}
-		t = (h++) + 1;
+		ten = (hundred++) + 1;
 	}
 }
