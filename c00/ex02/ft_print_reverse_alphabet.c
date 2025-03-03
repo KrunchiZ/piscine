@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 12:35:51 by kchiang           #+#    #+#             */
-/*   Updated: 2025/02/27 16:11:31 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/03/03 09:50:12 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,3 +23,10 @@ void	ft_print_reverse_alphabet(void)
 		ch--;
 	}
 }
+
+/*
+int	main(void)
+{
+	ft_print_reverse_alphabet();
+}
+*/

@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 17:05:47 by kchiang           #+#    #+#             */
-/*   Updated: 2025/02/28 11:47:12 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/03/03 09:58:29 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,3 +49,10 @@ void	ft_print_comb(void)
 		ten = (hundred++) + 1;
 	}
 }
+
+/*
+int	main(void)
+{
+	ft_print_comb();
+}
+*/

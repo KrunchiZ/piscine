@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 12:35:51 by kchiang           #+#    #+#             */
-/*   Updated: 2025/02/27 17:05:03 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/03/03 09:56:05 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,3 +24,10 @@ void	ft_is_negative(int n)
 	else
 		write(1, &positive, 1);
 }
+
+/*
+int	main(void)
+{
+	ft_is_negative(42);
+}
+*/

@@ -6,14 +6,20 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 10:21:36 by kchiang           #+#    #+#             */
-/*   Updated: 2025/02/27 10:53:22 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/03/03 09:44:40 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h> //Pull write from unistd library
+#include <unistd.h>
 
 void	ft_putchar(char c)
 {
-	return (write(1, &c, 1));
+	write(1, &c, 1);
 }
-//access c address to print value
+
+/*
+int	main(void)
+{
+	ft_putchar('a');
+}
+*/
