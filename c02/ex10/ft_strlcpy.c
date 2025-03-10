@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 09:56:25 by kchiang           #+#    #+#             */
-/*   Updated: 2025/03/06 17:27:41 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/03/10 21:35:17 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 
 	srclen = 0;
 	i = 0;
-	if (src == NULL || dest == NULL || size == 0)
+	if (src == 0 || dest == 0 || size == 0)
 		return (srclen);
 	while (src[i] != '\0')
 	{
@@ -43,8 +43,8 @@ int	main(void)
 	unsigned int	len;
 
 	src = "0123456789";
-	printf("src = \"%s\"\n", src);
+	printf("src = \"%s\"\ndest = \"%s\"\n", src, dest);
 	len = ft_strlcpy(dest, src, 5);
-	printf("dest = \"%s\"\nNote: src length = %u", dest, len);
+	printf("new dest = \"%s\"\nNote: src length = %u", dest, len);
 	return (0);
 }
