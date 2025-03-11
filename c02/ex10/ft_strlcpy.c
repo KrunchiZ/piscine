@@ -6,11 +6,11 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 09:56:25 by kchiang           #+#    #+#             */
-/*   Updated: 2025/03/10 21:35:17 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/03/11 10:46:04 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+//#include <stdio.h>
 
 unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 {
@@ -36,6 +36,7 @@ unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 	return (srclen);
 }
 
+/*
 int	main(void)
 {
 	char			dest[5] = "DEST";
@@ -48,3 +49,4 @@ int	main(void)
 	printf("new dest = \"%s\"\nNote: src length = %u", dest, len);
 	return (0);
 }
+*/
