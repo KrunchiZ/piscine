@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 09:56:25 by kchiang           #+#    #+#             */
-/*   Updated: 2025/03/06 17:09:23 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/03/11 15:09:28 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*ft_strncpy(char *dest, char *src, unsigned int n)
 {
 	unsigned int	i;
 
-	if (src == NULL || dest == NULL || n == 0)
+	if (src == 0 || dest == 0 || n == 0)
 		return (dest);
 	i = 0;
 	while (i < n && src[i] != '\0')

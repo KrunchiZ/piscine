@@ -6,23 +6,17 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 09:56:25 by kchiang           #+#    #+#             */
-/*   Updated: 2025/03/06 16:54:13 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/03/11 15:08:31 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <unistd.h>
-
-void	ft_putstr(char *str)
-{
-	while (*str != '\0')
-		write(1, str++, 1);
-}
+//#include <stdio.h>
 
 char	*ft_strcpy(char *dest, char *src)
 {
 	int	i;
 
-	if (src == NULL || dest == NULL)
+	if (src == 0 || dest == 0)
 		return (dest);
 	i = 0;
 	while (src[i] != '\0')
@@ -37,14 +31,12 @@ char	*ft_strcpy(char *dest, char *src)
 /*
 int	main(void)
 {
-	char	dest[4];
+	char	dest[7];
 	char	*src;
 
 	src = "string";
-	ft_putstr(src);
+	printf("%s\nCopied: ", src);
 	ft_strcpy(dest, src);
-	write(1, "\n", 1);
-	write(1, "Copied: ", 9);
-	ft_putstr(dest);
+	printf("%s", dest);
 }
 */

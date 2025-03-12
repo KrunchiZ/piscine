@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 09:56:25 by kchiang           #+#    #+#             */
-/*   Updated: 2025/03/11 10:46:04 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/03/11 15:14:25 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,16 @@ unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 	unsigned int	srclen;
 
 	srclen = 0;
-	i = 0;
-	if (src == 0 || dest == 0 || size == 0)
+	if (src == 0)
 		return (srclen);
+	i = 0;
 	while (src[i] != '\0')
 	{
 		srclen++;
 		i++;
 	}
+	if (dest == 0 || size == 0)
+		return (srclen);
 	i = 0;
 	while (i < size - 1)
 	{
