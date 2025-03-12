@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 15:20:42 by kchiang           #+#    #+#             */
-/*   Updated: 2025/03/10 19:14:19 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/03/12 15:55:58 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,14 @@ char	*ft_strstr(char *str, char *to_find)
 		else
 			return (str);
 	}
-	return (NULL);
+	return (0);
 }
 
 /*
 int	main(void)
 {
 	char	*string = "Hello, World!";
-	char	*word = "Wo";
+	char	*word = "a";
 	char	*search_result;
 	long	position;
 
@@ -71,7 +71,10 @@ int	main(void)
 		printf("\"%s\" is found at position: %ld.", word, position);
 	}
 	else
+	{
 		printf("\"%s\" is not found in \"%s\".", word, string);
+		printf("pointer = %p", (void *)search_result);
+	}
 	return (0);
 }
 */

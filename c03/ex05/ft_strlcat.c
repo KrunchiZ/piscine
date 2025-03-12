@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 15:12:01 by kchiang           #+#    #+#             */
-/*   Updated: 2025/03/10 22:10:10 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/03/12 20:15:55 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,13 @@ unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 	unsigned int	src_len;
 	unsigned int	i;
 
-	if (dest == 0 || src == 0 || size == 0)
-		return (0);
-	dest_len = ft_strlen(dest);
-	src_len = ft_strlen(src);
-	if (dest_len >= size - 1)
+	dest_len = 0;
+	src_len = 0;
+	if (dest)
+		dest_len = ft_strlen(dest);
+	if (src)
+		src_len = ft_strlen(src);
+	if (!dest || !src || !size || dest_len >= size - 1)
 		return (dest_len + src_len);
 	i = dest_len;
 	while (i < size - 1)
