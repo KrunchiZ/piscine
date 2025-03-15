@@ -1,38 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_recursive_power.c                               :+:      :+:    :+:   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/13 14:12:40 by kchiang           #+#    #+#             */
-/*   Updated: 2025/03/15 16:34:11 by kchiang          ###   ########.fr       */
+/*   Created: 2025/03/15 14:59:11 by kchiang           #+#    #+#             */
+/*   Updated: 2025/03/15 17:31:09 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <stdio.h>
-
-int	ft_recursive_power(int nb, int power)
+int	ft_sqrt(int nb)
 {
-	int	answer;
+	long sqrt;
 
-	answer = 1;
-	if (power < 0)
-		return (0);
-	if (power == 0)
-		return (answer);
-	answer = nb * ft_recursive_power(nb, power - 1);
-	return (answer);
-}
+	sqrt = 0;
+	while (sqrt <= nb / 2)
+	{
+		if (sqrt * sqrt >= nb)
+			return (0);
+		if (
 
-/*
-int	main(void)
-{
-	int nbr = 2;
-	int	pwr = 0;
-	int	answer = ft_recursive_power(nbr, pwr);
-
-	printf("%d to the power of %d = %d.", nbr, pwr, answer);
-	return (0);
-}
-*/

@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 15:20:42 by kchiang           #+#    #+#             */
-/*   Updated: 2025/03/12 15:55:58 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/03/13 18:18:01 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,14 @@ int	ft_strncmp(char *s1, char *s2, unsigned int n)
 	unsigned int	i;
 
 	i = 0;
-	while (i < n)
+	while (i < n && (s1[i] || s2[i]))
 	{
 		cmp = s1[i] - s2[i];
 		if (cmp)
 			return (cmp);
 		i++;
 	}
+	cmp = s1[i] - s2[i];
 	return (cmp);
 }
 
@@ -45,6 +46,8 @@ char	*ft_strstr(char *str, char *to_find)
 {
 	unsigned int	len;
 
+	if (!*to_find)
+		return (str);
 	len = ft_strlen(to_find);
 	while (*str)
 	{
@@ -59,8 +62,8 @@ char	*ft_strstr(char *str, char *to_find)
 /*
 int	main(void)
 {
-	char	*string = "Hello, World!";
-	char	*word = "a";
+	char	*string = "";
+	char	*word = "";
 	char	*search_result;
 	long	position;
 
@@ -69,6 +72,7 @@ int	main(void)
 	{
 		position = search_result - string;
 		printf("\"%s\" is found at position: %ld.", word, position);
+		printf("\n%s\n", ft_strstr(string, word));
 	}
 	else
 	{

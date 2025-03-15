@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 14:12:40 by kchiang           #+#    #+#             */
-/*   Updated: 2025/03/13 14:29:17 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/03/15 16:25:35 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_iterative_power(int nb, int power)
 	answer = 1;
 	if (power < 0)
 		return (0);
-	if (nb == 0 && power == 0)
+	if (power == 0)
 		return (answer);
 	while (power > 0)
 	{

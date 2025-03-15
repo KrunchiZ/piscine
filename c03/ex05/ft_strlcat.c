@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 15:12:01 by kchiang           #+#    #+#             */
-/*   Updated: 2025/03/12 20:15:55 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/03/15 18:51:01 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,23 +28,19 @@ unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 	unsigned int	src_len;
 	unsigned int	i;
 
-	dest_len = 0;
-	src_len = 0;
-	if (dest)
-		dest_len = ft_strlen(dest);
-	if (src)
-		src_len = ft_strlen(src);
-	if (!dest || !src || !size || dest_len >= size - 1)
-		return (dest_len + src_len);
-	i = dest_len;
-	while (i < size - 1)
+	src_len = ft_strlen(src);
+	dest_len = ft_strlen(dest);
+	if (size <= dest_len)
+		return (size + src_len);
+	i = 0;
+	while (i + dest_len < size - 1)
 	{
 		if (*src)
-			dest[i++] = *src++;
-		if (!(*src))
+			dest[dest_len + i++] = *src++;
+		else
 			break ;
 	}
-	dest[i] = '\0';
+	dest[dest_len + i] = '\0';
 	return (dest_len + src_len);
 }
 
@@ -52,13 +48,13 @@ unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 int	main(void)
 {
 	char	*src = "abc";
-	char	dest[10] = "012";
-	int		n = 5;
+	char	dest[10] = "012345";
+	int		n = 8;
 	int		length;
 
-	printf("\"%s\" + \"%s\" = ", dest, src);
+	printf("\"%s\" + \"%s\"\n", dest, src);
 	length = ft_strlcat(dest, src, n);
-	printf("\"%s\", intended length = %d", dest, length);
+	printf("=> \"%s\", returned length = %d", dest, length);
 	return (0);
 }
 */
