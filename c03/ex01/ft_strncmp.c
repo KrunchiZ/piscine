@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 10:39:23 by kchiang           #+#    #+#             */
-/*   Updated: 2025/03/13 16:06:37 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/03/16 11:18:57 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,14 @@ int	ft_strncmp(char *s1, char *s2, unsigned int n)
 			return (cmp);
 		i++;
 	}
-	cmp = s1[i] - s2[i];
 	return (cmp);
 }
 
 /*
 int	main(void)
 {
-	char	*s1 = "abcd";
-	char	*s2 = "abc";
+	char	*s1 = "abc";
+	char	*s2 = "abcd";
 	int		n = 3;
 	int		cmp = ft_strncmp(s1, s2, n);
 
