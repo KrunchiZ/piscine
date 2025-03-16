@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 15:20:42 by kchiang           #+#    #+#             */
-/*   Updated: 2025/03/16 11:23:05 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/03/16 20:00:03 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	ft_strncmp(char *s1, char *s2, unsigned int n)
 	unsigned int	i;
 
 	i = 0;
+	cmp = 0;
 	while (i < n && (s1[i] || s2[i]))
 	{
 		cmp = s1[i] - s2[i];
