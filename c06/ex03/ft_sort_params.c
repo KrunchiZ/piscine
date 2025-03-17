@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 17:55:18 by kchiang           #+#    #+#             */
-/*   Updated: 2025/03/16 23:25:39 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/03/17 19:51:43 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,9 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 		put_arg(argv[1]);
 	else
+	{
 		sort_argv(argc, argv);
-	print_arg(argc, argv);
+		print_arg(argc, argv);
+	}
 	return (0);
 }
