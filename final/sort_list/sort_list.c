@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 20:54:03 by kchiang           #+#    #+#             */
-/*   Updated: 2025/03/24 03:43:28 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/03/24 03:59:12 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ t_list	*recurse_sort(t_list *lst, t_list *prev, int(*cmp)(int, int))
 	if (lst->next == NULL)
 		return (lst);
 	if (cmp(lst->data, lst->next->data))
-		recurse_sort(lst->next, lst, cmp);
+		lst->next = recurse_sort(lst->next, lst, cmp);
 	else
 	{
 		temp = lst;
@@ -81,7 +81,7 @@ int	main(void)
 	t_list	lst4;
 
 	lst = &lst0;
-	lst0.data = 20;
+	lst0.data = 12;
 	lst1.data = 14;
 	lst2.data = 17;
 	lst3.data = 11;
