@@ -1,26 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stock_str.h                                     :+:      :+:    :+:   */
+/*   ft_show_tab.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/26 16:23:28 by kchiang           #+#    #+#             */
-/*   Updated: 2025/03/26 18:53:51 by kchiang          ###   ########.fr       */
+/*   Created: 2025/03/26 18:45:03 by kchiang           #+#    #+#             */
+/*   Updated: 2025/03/26 18:56:22 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_STOCK_STR_H
-# define FT_STOCK_STR_H
+#include "ft_stock_str.h"
+#include <unistd.h>
 
-void	ft_show_tab(t_stock_str *par);
-t_stock_str	*ft_strs_to_tab(int ac, char **av);
-
-typedef struct	s_stock_str
+void	ft_putstr(char *str)
 {
-	int		size;
-	char	*str;
-	char	*copy;
-} t_stock_str;
+}
 
-#endif
+void	ft_putnbr(int nb)
+{
+}
+
+void	ft_show_tab(t_stock_str *par)
+{
+	int	i;
+
+	i = 0;
+	while (par[i].str != 0)
+	{
+		ft_putstr(par[i].str);
+		ft_putnbr(par[i].size);
+		ft_putstr(par[i].copy);
+		i++;
+	}
+}
