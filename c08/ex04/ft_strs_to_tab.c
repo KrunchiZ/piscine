@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 16:21:57 by kchiang           #+#    #+#             */
-/*   Updated: 2025/03/26 18:05:25 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/03/26 18:20:22 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,17 +60,17 @@ t_stock_str	*ft_strs_to_tab(int ac, char **av)
 	int			i;
 	t_stock_str	*host;
 
-	host = (struct *)malloc(sizeof(t_stock_str) * ac);
+	host = (t_stock_str *)malloc(sizeof(t_stock_str) * ac);
 	if (host == NULL)
 		return (NULL);
-	host[ac]->str = 0;
+	host[ac].str = 0;
 	i = 0;
 	while (i < ac)
 	{
 		host[i].size = ft_strlen(av[i]);
 		host[i].str = av[i];
 		host[i].copy = strdup(av[i], host[i].size);
-		if (host[i]->copy == NULL)
+		if (host[i].copy == NULL)
 		{
 			free_host(host, i);
 			return (NULL);
