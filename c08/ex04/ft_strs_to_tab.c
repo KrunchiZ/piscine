@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 16:21:57 by kchiang           #+#    #+#             */
-/*   Updated: 2025/03/26 18:31:31 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/03/26 19:38:40 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	free_host(t_stock_str *host, int depth)
 	i = 0;
 	while (i < depth)
 		free(host[i++].copy);
+	free(host);
 	return ;
 }
 
