@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 16:21:57 by kchiang           #+#    #+#             */
-/*   Updated: 2025/03/26 18:20:22 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/03/26 18:31:31 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_strlen(char *str)
 }
 
 //strdup malloc with struct size
-char	*strdup(char *src, int length)
+char	*ft_strdup(char *src, int length)
 {
 	char	*copy;
 	int		i;
@@ -60,7 +60,7 @@ t_stock_str	*ft_strs_to_tab(int ac, char **av)
 	int			i;
 	t_stock_str	*host;
 
-	host = (t_stock_str *)malloc(sizeof(t_stock_str) * ac);
+	host = (t_stock_str *)malloc(sizeof(t_stock_str) * (ac + 1));
 	if (host == NULL)
 		return (NULL);
 	host[ac].str = 0;
@@ -69,7 +69,7 @@ t_stock_str	*ft_strs_to_tab(int ac, char **av)
 	{
 		host[i].size = ft_strlen(av[i]);
 		host[i].str = av[i];
-		host[i].copy = strdup(av[i], host[i].size);
+		host[i].copy = ft_strdup(av[i], host[i].size);
 		if (host[i].copy == NULL)
 		{
 			free_host(host, i);
