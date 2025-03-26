@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 19:42:23 by kchiang           #+#    #+#             */
-/*   Updated: 2025/03/26 19:48:48 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/03/26 21:16:48 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int argc, char **argv)
 	if (host)
 	{
 		ft_show_tab(host);
-		free_host(host, argc);
+		free_host(host, argc - 1);
 	}
 	return (0);
 }
