@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 18:45:03 by kchiang           #+#    #+#             */
-/*   Updated: 2025/03/26 19:36:52 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/03/26 22:34:33 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_putnbr(int nb)
 {
 	if (nb == 0)
 	{
-		write(1, "0", 1);
+		write(1, "0\n", 2);
 		return ;
 	}
 	print_nbr(nb);
