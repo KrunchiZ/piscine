@@ -6,52 +6,65 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 17:46:34 by kchiang           #+#    #+#             */
-/*   Updated: 2025/04/14 12:43:41 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/04/14 13:42:56 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_print_combn(int n)
+void	print_comb(int *comb, int n, int i)
 {
-	int		comb[9];
-	int		i;
-	int		j;
-	int		depth;
 	char	digit;
 
-	i = 0;
-	depth = 0;
-	while (i < 10)
+	while (i < n)
 	{
-		comb[depth] = i;
+		digit = comb[i] + '0';
+		write(1, &digit, 1);
+		i++;
+	}
+}
+
+void	fill_comb(int *comb, int n, int count, int depth)
+{
+	while (count < 10)
+	{
+		comb[depth] = count++;
 		depth++;
 		if (depth == n)
 		{
-			j = 0;
-			while (j < n)
-			{
-				digit = comb[j] + '0';
-				write(1, &digit, 1);
-				j++;
-			}
+			print_comb(comb, n, 0);
 			if (comb[0] != (10 - n))
 				write(1, ", ", 2);
+			else
+				return ;
 			depth--;
 		}
-		if (i == 9)
+		if (count > 9)
 		{
-			depth--;
-			i = comb[depth] + 1;
+			while (comb[depth] == 9)
+				depth--;
+			count = comb[depth] + 1;
 		}
-		else
-			i++;
 	}
+}
+
+void	ft_print_combn(int n)
+{
+	int		comb[9];
+
+	if (n > 0 && n < 10)
+		fill_comb(comb, n, 0, 0);
 	return ;
 }
 
-int	main(void)
+/*
+int	main(int argc, char **argv)
 {
-	ft_print_combn(3);
+	int n;
+
+	n = argv[1][0] - '0';
+	if (argc == 2 && argv[1][1] == '\0')
+		ft_print_combn(n);
 	return (0);
 }
+*/
