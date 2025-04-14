@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 17:46:34 by kchiang           #+#    #+#             */
-/*   Updated: 2025/04/14 13:45:48 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/04/14 14:16:29 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	print_comb(int *comb, int n, int i)
 
 void	fill_comb(int *comb, int n, int count, int depth)
 {
-	while (count < 10)
+	while (1)
 	{
 		comb[depth++] = count++;
 		if (depth == n)
@@ -53,7 +53,6 @@ void	ft_print_combn(int n)
 
 	if (n > 0 && n < 10)
 		fill_comb(comb, n, 0, 0);
-	return ;
 }
 
 /*
