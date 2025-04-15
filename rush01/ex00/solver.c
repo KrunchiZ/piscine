@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 19:50:11 by kchiang           #+#    #+#             */
-/*   Updated: 2025/04/16 02:16:19 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/04/16 03:30:27 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,15 @@ void	check_clue(int *n, int *pos, int *answer, int clue[4][4])
 	if ((*pos % 4 == 0 && row_is_bad(answer, clue, *pos))
 		|| (*pos > 12 && col_is_bad(answer, clue, *pos - 1)))
 	{
+		(*pos)--;
 		while (*n > 4)
 		{
-			answer[--(*pos)] = 0;
-			*n = answer[--(*pos)] + 1;
+			answer[*pos] = 0;
+			*n = answer[(*pos)--] + 1;
 		}
 	}
+	else
+		*n = 1;
 	return ;
 }
 

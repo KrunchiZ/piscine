@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 00:19:01 by kchiang           #+#    #+#             */
-/*   Updated: 2025/04/16 01:53:24 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/04/16 03:30:01 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	bottom_is_bad(int *answer, int *clue, int pos)
 		if (answer[pos - (i * 4)] > max)
 		{
 			seen++;
-			max = answer[pos - i];
+			max = answer[pos - (i * 4)];
 		}
 		i++;
 	}
