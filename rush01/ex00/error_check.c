@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 15:53:36 by kchiang           #+#    #+#             */
-/*   Updated: 2025/04/15 22:09:15 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/04/15 22:13:29 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,7 @@ int	arg_is_invalid(int argc, char *argv)
 		if (index % 2 && argv[index] != ' ')
 			return (1);
 		else if (index % 2 == 0 && (argv[index] < '1' || argv[index] > '4'))
-		{
-			write(1, "KO", 2);
 			return (1);
-		}
 		index++;
 	}
 	return (0);
