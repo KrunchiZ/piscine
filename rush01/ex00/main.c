@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 10:59:53 by kchiang           #+#    #+#             */
-/*   Updated: 2025/04/16 01:53:43 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/04/16 02:15:27 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	parse_clue(int clue[4][4], char *argv)
 	while (i < 31)
 	{
 		if (i % 2 == 0)
-			clue[row][col++] = argv[i];
+			clue[row][col++] = argv[i] - '0';
 		i++;
 		if (col == 4)
 		{

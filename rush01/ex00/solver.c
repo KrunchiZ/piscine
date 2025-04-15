@@ -6,12 +6,11 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 19:50:11 by kchiang           #+#    #+#             */
-/*   Updated: 2025/04/16 02:01:51 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/04/16 02:16:19 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
-#include <stdio.h>
 
 int	is_unique(int nbr, int *answer, int pos)
 {
@@ -44,6 +43,25 @@ void	check_clue(int *n, int *pos, int *answer, int clue[4][4])
 			answer[--(*pos)] = 0;
 			*n = answer[--(*pos)] + 1;
 		}
+	}
+	return ;
+}
+
+void	test_answer(int *answer)
+{
+	int		i;
+	char	c;
+
+	i = 0;
+	while (i < 16)
+	{
+		c = answer[i] + '0';
+		write(1, &c, 1);
+		if (i == 3 || i == 7 || i == 11 || i == 15)
+			write(1, "\n", 1);
+		else
+			write(1, " ", 1);
+		i++;
 	}
 	return ;
 }
