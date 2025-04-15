@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 19:50:11 by kchiang           #+#    #+#             */
-/*   Updated: 2025/04/15 23:19:51 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/04/15 23:51:30 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,22 @@ int	is_unique(int nbr, int *answer, int pos)
 	return (1);
 }
 
-int	solve_puzzle(int *clue, int *answer)
+void	check_clue(int *n, int *pos, int *answer, int *clue)
 {
-	int	pos;
+	if ((*pos % 4 == 0 && row_is_bad(*n - 1, answer, clue, *pos))
+		|| (*pos > 12 && col_is_bad(*n - 1, answer, clue, *pos)))
+	{
+		while (*n > 4)
+		{
+			answer[--(*pos)] = 0;
+			*n = answer[--(*pos)] + 1;
+		}
+	}
+
+int	solve_puzzle(int *clue, int *answer, int pos)
+{
 	int	n;
 
-	pos = 0;
 	while (pos < 16)
 	{
 		n = 1;
@@ -48,10 +58,8 @@ int	solve_puzzle(int *clue, int *answer)
 			if (is_unique(n, answer, pos))
 			{
 				answer[pos++] = n++;
-				if ((pos % 4 == 0 && row_is_bad(n - 1, answer, pos))
-					|| (pos > 12 && col_is_bad(n - 1, answer, pos)))
-					pos--;
-				else if (pos == 16)
+				check_clue(&n, &pos, answer, clue);
+				if (pos == 16)
 					return (1);
 //				printf("pos %d n %d\n", pos, n);
 			}
