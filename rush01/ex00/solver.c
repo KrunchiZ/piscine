@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 19:50:11 by kchiang           #+#    #+#             */
-/*   Updated: 2025/04/16 01:43:20 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/04/16 02:01:51 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,12 @@ int	solve_puzzle(int clue[4][4], int *answer, int n, int pos)
 	while (pos < 16)
 	{
 		n = 1;
-		while (n <= 4)
+		while (n <= 4 && pos < 16)
 		{
 			if (is_unique(n, answer, pos))
 			{
 				answer[pos++] = n++;
 				check_clue(&n, &pos, answer, clue);
-				if (pos == 16)
-					return (1);
 			}
 			else
 			{
@@ -75,4 +73,5 @@ int	solve_puzzle(int clue[4][4], int *answer, int n, int pos)
 			}
 		}
 	}
+	return (1);
 }
