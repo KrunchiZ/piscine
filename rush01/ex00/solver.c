@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 19:50:11 by kchiang           #+#    #+#             */
-/*   Updated: 2025/04/15 23:51:30 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/04/16 00:01:04 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void	check_clue(int *n, int *pos, int *answer, int *clue)
 			*n = answer[--(*pos)] + 1;
 		}
 	}
+	return ;
+}
 
 int	solve_puzzle(int *clue, int *answer, int pos)
 {
@@ -61,7 +63,6 @@ int	solve_puzzle(int *clue, int *answer, int pos)
 				check_clue(&n, &pos, answer, clue);
 				if (pos == 16)
 					return (1);
-//				printf("pos %d n %d\n", pos, n);
 			}
 			else
 			{
