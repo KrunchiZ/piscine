@@ -6,80 +6,47 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 10:59:53 by kchiang           #+#    #+#             */
-/*   Updated: 2025/03/08 21:26:00 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/04/15 14:28:52 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
-
-void	print_space(char grid[4][8])
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < 4)
-	{
-		j = 0;
-		while (j < 8)
-		{
-			if (j == 7)
-				grid[i][j] = '\n';
-			else
-				grid[i][j] = ' ';
-			j++;
-		}
-		i++;
-	}
-}
+#include "unistd.h"
 
 int	ft_strlen(char *str)
 {
 	int	len;
 
 	len = 0;
-	while (*str)
-	{
+	while (*str++)
 		len++;
-		str++;
-	}
 	return (len);
 }
 
-void	print_grid(char grid[4][8])
+int	arg_is_invalid(int argc, char *argv)
 {
-	int	i;
-	int	j;
+	int	space_index;
 
-	i = 0;
-	while (i < 4)
+	if (argc != 2 || ft_strlen(argv) != 31)
+		return (1);
+	space_index = 1;
+	while (space_index < 32)
 	{
-		j = 0;
-		while (j < 8)
-		{
-			write(1, &grid[i][j++], 1);
-		}
-		i++;
+		if (argv[space_index] != ' ')
+			return (1);
+		space_index += 2;
 	}
+	return (0);
 }
 
 int	main(int argc, char *argv[])
 {
-	int		inlength;
-	int		doable;
-	char	grid[4][8];
+	int	grid[16];
 
-	inlength = ft_strlen(argv[1]);
-	if (argc != 2 || inlength != 31)
+	if (arg_is_invalid(argc, argv[1]))
 		write(1, "Error\n", 6);
-	doable = ft_check(argv[1]);
-	if (doable == 0)
+	else
 	{
-		write(1, "Error\n", 6);
-		return (0);
+		write(1, "start_program", 13);
 	}
-	print_space(grid);
-	check_4(argv[1], grid);
-	print_grid(grid);
 	return (0);
 }
