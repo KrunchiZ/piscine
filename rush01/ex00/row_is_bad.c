@@ -6,11 +6,9 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 00:19:01 by kchiang           #+#    #+#             */
-/*   Updated: 2025/04/16 02:13:41 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/04/16 02:17:12 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdio.h>
 
 int	left_is_bad(int *answer, int *clue, int pos)
 {
@@ -30,7 +28,6 @@ int	left_is_bad(int *answer, int *clue, int pos)
 		}
 		i--;
 	}
-	printf("seen %d clue %d", seen, clue[pos/4-1]);
 	if (seen != clue[(pos / 4) - 1])
 		return (1);
 	return (0);
