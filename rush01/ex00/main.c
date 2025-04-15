@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 10:59:53 by kchiang           #+#    #+#             */
-/*   Updated: 2025/04/15 23:51:43 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/04/16 00:16:34 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	main(int argc, char *argv[])
 	else
 	{
 		parse_grid(clue, answer, argv[1]);
-		if (solve_puzzle(clue, answer, 0))
+		if (solve_puzzle(clue, answer, 0, 0))
 			print_answer(answer);
 		else
 			write(1, "Error\n", 6);
