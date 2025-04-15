@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 15:53:36 by kchiang           #+#    #+#             */
-/*   Updated: 2025/04/15 15:57:29 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/04/15 19:58:38 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,21 @@ int	ft_strlen(char *str)
 	return (len);
 }
 
-// check if argv has 16 numbers and only spaces in between
+// check if argv has 16 numbers (1-4) and only spaces in between
 int	arg_is_invalid(int argc, char *argv)
 {
-	int	space_index;
+	int	index;
 
 	if (argc != 2 || ft_strlen(argv) != 31)
 		return (1);
-	space_index = 0;
-	while (space_index < 31)
+	index = 0;
+	while (index < 31)
 	{
-		if (space_index % 2 && argv[space_index] != ' ')
+		if (index % 2 && argv[index] != ' ')
 			return (1);
-		space_index++;
+		else if (index % 2 == 0 && (argv[index] < 1 || argv[index] > 4))
+			return (1);
+		index++;
 	}
 	return (0);
 }
