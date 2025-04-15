@@ -6,39 +6,13 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 10:59:53 by kchiang           #+#    #+#             */
-/*   Updated: 2025/04/15 15:25:50 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/04/15 15:58:56 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
+#include "header.h"
 
-int	ft_strlen(char *str)
-{
-	int	len;
-
-	len = 0;
-	while (*str++)
-		len++;
-	return (len);
-}
-
-int	arg_is_invalid(int argc, char *argv)
-{
-	int	space_index;
-
-	if (argc != 2 || ft_strlen(argv) != 31)
-		return (1);
-	space_index = 0;
-	while (space_index < 31)
-	{
-		if (space_index % 2 && argv[space_index] != ' ')
-			return (1);
-		space_index++;
-	}
-	return (0);
-}
-
+// parse argv in clue, fill up answer with zeroes
 void	parse_grid(int *clue, int *answer, char *argv)
 {
 	int	i;
@@ -58,6 +32,25 @@ void	parse_grid(int *clue, int *answer, char *argv)
 	return ;
 }
 
+void	print_answer(int *answer)
+{
+	int		i;
+	char	c;
+
+	i = 0;
+	while (i < 16)
+	{
+		c = answer[i] + '0';
+		write(1, &c, 1);
+		if (i == 3 || i == 7 || i == 11 || i == 15)
+			write(1, "\n", 1);
+		else
+			write(1, " ", 1);
+		i++;
+	}
+	return ;
+}
+
 int	main(int argc, char *argv[])
 {
 	int	clue[16];
@@ -67,8 +60,11 @@ int	main(int argc, char *argv[])
 		write(1, "Error\n", 6);
 	else
 	{
-		write(1, "start_program\n", 14);
 		parse_grid(clue, answer, argv[1]);
+//		if (solve_puzzle(clue, answer))
+			print_answer(answer);
+//		else
+//			write(1, "Error\n", 6);
 	}
 	return (0);
 }
