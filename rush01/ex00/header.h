@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 15:57:49 by kchiang           #+#    #+#             */
-/*   Updated: 2025/04/16 00:39:03 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/04/16 01:21:29 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 
 int	arg_is_invalid(int argc, char *argv);
 int	ft_strlen(char *str);
-int	solve_puzzle(int *clue, int *answer);
-int	row_is_bad(int n, int *answer, int *clue, int pos);
-int	col_is_bad(int n, int *answer, int *clue, int pos);
+int	solve_puzzle(int clue[4][4], int *answer);
+int	row_is_bad(int *answer, int clue[4][4], int pos);
+int	col_is_bad(int *answer, int clue[4][4], int pos);
 
 #endif

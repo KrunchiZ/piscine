@@ -6,29 +6,43 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 10:59:53 by kchiang           #+#    #+#             */
-/*   Updated: 2025/04/16 00:16:34 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/04/16 01:53:43 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
 // parse argv in clue, fill up answer with zeroes
-void	parse_grid(int *clue, int *answer, char *argv)
+void	parse_clue(int clue[4][4], char *argv)
 {
 	int	i;
-	int j;
+	int	row;
+	int	col;
+
+	i = 0;
+	row = 0;
+	col = 0;
+	while (i < 31)
+	{
+		if (i % 2 == 0)
+			clue[row][col++] = argv[i];
+		i++;
+		if (col == 4)
+		{
+			row++;
+			col = 0;
+		}
+	}
+	return ;
+}
+
+void	parse_answer(int *answer)
+{
+	int	i;
 
 	i = 0;
 	while (i < 16)
 		answer[i++] = 0;
-	i = 0;
-	j = 0;
-	while (i < 31)
-	{
-		if (i % 2 == 0)
-			clue[j++] = argv[i];
-		i++;
-	}
 	return ;
 }
 
@@ -53,14 +67,15 @@ void	print_answer(int *answer)
 
 int	main(int argc, char *argv[])
 {
-	int	clue[16];
+	int	clue[4][4];
 	int	answer[16];
 
 	if (arg_is_invalid(argc, argv[1]))
 		write(1, "Error\n", 6);
 	else
 	{
-		parse_grid(clue, answer, argv[1]);
+		parse_clue(clue, argv[1]);
+		parse_answer(answer);
 		if (solve_puzzle(clue, answer, 0, 0))
 			print_answer(answer);
 		else

@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 19:50:11 by kchiang           #+#    #+#             */
-/*   Updated: 2025/04/16 00:37:51 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/04/16 01:43:20 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ int	is_unique(int nbr, int *answer, int pos)
 	return (1);
 }
 
-void	check_clue(int *n, int *pos, int *answer, int *clue)
+void	check_clue(int *n, int *pos, int *answer, int clue[4][4])
 {
-	if ((*pos % 4 == 0 && row_is_bad(*n - 1, answer, clue, *pos))
-		|| (*pos > 12 && col_is_bad(*n - 1, answer, clue, *pos)))
+	if ((*pos % 4 == 0 && row_is_bad(answer, clue, *pos))
+		|| (*pos > 12 && col_is_bad(answer, clue, *pos - 1)))
 	{
 		while (*n > 4)
 		{
@@ -48,7 +48,7 @@ void	check_clue(int *n, int *pos, int *answer, int *clue)
 	return ;
 }
 
-int	solve_puzzle(int *clue, int *answer, int n, int pos)
+int	solve_puzzle(int clue[4][4], int *answer, int n, int pos)
 {
 	while (pos < 16)
 	{
