@@ -15,7 +15,7 @@ $(SRC_PATH)/%.o: $(SRC_PATH)/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 fclean: clean
-	rm -f *.a
+	rm -f libft.a
 
 clean:
 	rm -f $(OBJS)
