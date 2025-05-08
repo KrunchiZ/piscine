@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 14:50:45 by kchiang           #+#    #+#             */
-/*   Updated: 2025/05/08 16:57:16 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/05/08 17:05:41 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	print_error(char *filename, char *program)
 	error_code = strerror(errno);
 	while (*error_code)
 		write(1, error_code++, 1);
+	write(1, "\n", 1);
 	return ;
 }
 
