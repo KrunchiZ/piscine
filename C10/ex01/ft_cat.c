@@ -6,47 +6,89 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 14:50:45 by kchiang           #+#    #+#             */
-/*   Updated: 2025/05/08 14:27:26 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/05/08 15:58:28 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
 #include <unistd.h>
+#include <string.h>
+#include <errno.h>
 
-void	ft_cat(char *filename)
+void	print_error(char *filename, char *program)
+{
+	char	*error_code;
+
+	while (program)
+		write(1, program++, 1);
+	write(1, ": ", 2);
+	while (filename)
+		write(1, filename++, 1);
+	write(1, ": ", 2);
+	error_code = strerror(errno);
+	while (error_code)
+		write(1, error_code++, 1);
+	return ;
+}
+
+int	ft_cat(char *filename, char *program)
 {
 	int		file_descriptor;
-	ssize_t	file_bytes;
-	char	host;
+	ssize_t	read_bytes;
+	char	buffer_ch;
 
 	file_descriptor = open(filename, O_RDONLY);
 	if (file_descriptor == -1)
-		write(1, "Cannot read file.", 17);
+	{
+		print_error(filename, program);
+		return (1);
+	}
 	else
 	{
-		file_bytes = read(file_descriptor, &host, 1);
-		while (file_bytes)
+		read_bytes = read(file_descriptor, &buffer_ch, 1);
+		while (read_bytes)
 		{
-			if (file_bytes == -1)
+			if (read_bytes == -1)
 			{
-				write(1, "Cannot read file.", 17);
-				break ;
+				print_error(filename, program);
+				return (1);
 			}
-			write(1, &host, 1);
-			file_bytes = read(file_descriptor, &host, 1);
+			write(1, &buffer_ch, 1);
+			read_bytes = read(file_descriptor, &buffer_ch, 1);
 		}
 		close(file_descriptor);
+	}
+	return (0);
+}
+
+void	ft_cat_stdin(void)
+{
+	char	buffer_ch;
+	ssize_t	read_bytes;
+
+	read_bytes = read(0, buffer_ch, 1);
+	while (read_bytes)
+	{
+		write(1, &buffer_ch, 1);
+		read(0, buffer_ch, 1);
 	}
 	return ;
 }
 
 int	main(int argc, char **argv)
 {
+	int	i;
+
 	if (argc < 2)
-		write(1, "File name missing.", 18);
-	else if (argc > 2)
-		write(1, "Too many arguments.", 19);
+		ft_cat_stdin;
 	else
-		ft_display_file(argv[1]);
+	{
+		i = 1;
+		while (i < argc)
+		{
+			if(ft_cat(argv[i++], argv[0]))
+				return (1);
+		}
+	}
 	return (0);
 }
