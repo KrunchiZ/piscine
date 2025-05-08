@@ -1,6 +1,6 @@
 CC := cc
 CFLAGS := -Wall -Wextra -Werror
-PROGRAM_NAMES := ft_display_file
+PROGRAM_NAMES := ft_cat
 OBJS := $(PROGRAM_NAMES).o
 
 .PHONY: all fclean clean re

@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 14:50:45 by kchiang           #+#    #+#             */
-/*   Updated: 2025/05/08 16:15:01 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/05/08 16:18:26 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ void	print_error(char *filename, char *program)
 {
 	char	*error_code;
 
-	while (program)
+	while (*program)
 		write(1, program++, 1);
 	write(1, ": ", 2);
-	while (filename)
+	while (*filename)
 		write(1, filename++, 1);
 	write(1, ": ", 2);
 	error_code = strerror(errno);
-	while (error_code)
+	while (*error_code)
 		write(1, error_code++, 1);
 	return ;
 }
