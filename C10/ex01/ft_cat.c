@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 14:50:45 by kchiang           #+#    #+#             */
-/*   Updated: 2025/05/08 16:07:09 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/05/08 16:15:01 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,10 @@ void	ft_cat_stdin(void)
 	ssize_t	read_bytes;
 
 	read_bytes = read(0, &buffer_ch, 1);
-	while (read_bytes)
+	while (read_bytes != 0)
 	{
 		write(1, &buffer_ch, 1);
-		read(0, &buffer_ch, 1);
+		read_bytes = read(0, &buffer_ch, 1);
 	}
 	return ;
 }
