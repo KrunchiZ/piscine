@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 14:50:45 by kchiang           #+#    #+#             */
-/*   Updated: 2025/05/08 16:18:26 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/05/08 16:57:16 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <errno.h>
+#include <libgen.h>
 
 void	print_error(char *filename, char *program)
 {
@@ -83,7 +84,7 @@ int	main(int argc, char **argv)
 		i = 1;
 		while (i < argc)
 		{
-			if (ft_cat(argv[i++], argv[0]))
+			if (ft_cat(argv[i++], basename(argv[0])))
 				return (1);
 		}
 	}
