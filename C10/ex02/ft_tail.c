@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 00:42:25 by kchiang           #+#    #+#             */
-/*   Updated: 2025/05/10 17:10:25 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/05/10 17:27:34 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,9 @@ int	main(int argc, char **argv)
 	if (tail_bytes == -1)
 	{
 		ft_putstr(program_name);
-		write(1, ": invalid number of bytes: ‘", 29);
+		write(1, ": invalid number of bytes: '", 29);
 		ft_putstr(argv[c_pos + 1]);
-		write(1, "’\n", 2);
+		write(1, "'\n", 2);
 		return (1);
 	}
 	write(1, "leggo", 5);
