@@ -6,20 +6,18 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 00:42:25 by kchiang           #+#    #+#             */
-/*   Updated: 2025/05/10 17:58:37 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/05/11 03:06:29 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fcntl.h>
 #include <unistd.h>
-#include <errno.h>
-#include <string.h>
-#include <stdlib.h>
 #include <libgen.h>
+
+void	ft_tail(int argc, char **argv, int n_bytes);
 
 int	ft_strcmp(char *s1, char *s2)
 {
-	int cmp;
+	int	cmp;
 
 	cmp = 0;
 	while (*s1)
@@ -38,7 +36,7 @@ int	check_option(int argc, char **argv)
 	i = 0;
 	while (++i < argc)
 	{
-		if (ft_strcmp(argv[i],"-c") == 0)
+		if (ft_strcmp(argv[i], "-c") == 0)
 			return (i);
 	}
 	return (i);
@@ -92,7 +90,6 @@ int	main(int argc, char **argv)
 		ft_putstr("’\n");
 		return (1);
 	}
-	write(1, "leggo", 5);
-	//ft_tail(argc, argv, tail_bytes);
+	ft_tail(argc, argv, tail_bytes);
 	return (0);
 }
