@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 00:42:25 by kchiang           #+#    #+#             */
-/*   Updated: 2025/05/11 04:14:16 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/05/13 14:59:32 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,38 @@ void	initialize_buffer(char *buffer, int n)
 
 void	exec_tail_stdin(char *buffer, int n_bytes)
 {
+	int	current;
+	int	count;
+	int	read_bytes;
+	int	i;
+
 	initialize_buffer(buffer, n_bytes);
+	current = 0;
+	count = 0;
+	read_bytes = read(0, buffer[current], 1);
+	while (read_bytes)
+	{
+		if (read_bytes == -1)
+		{
+			ft_puterror(strerror(errno));
+			 return ;
+		}
+		current = (current + 1) % 10;
+		count++;
+		read_bytes = read(0, buffer[current], 1);
+	}
+	i = 0;
+	if (count < n_bytes)
+	{
+		while (i < count)
+		{
+			write(1, buffer[current], 1);
+			current = (current + 1) % 10;
+			i++;
+		}
+	}
+	//if count > n_bytes
+	return (0);
 }
 
 int	exec_tail(char *filename, char *buffer, int n_bytes)
