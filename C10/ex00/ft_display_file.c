@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 14:50:45 by kchiang           #+#    #+#             */
-/*   Updated: 2025/05/06 17:47:06 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/07/01 12:45:47 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@ void	ft_display_file(char *filename)
 {
 	int		file_descriptor;
 	ssize_t	file_bytes;
-	char	host;
+	char	host[100];
 
 	file_descriptor = open(filename, O_RDONLY);
 	if (file_descriptor == -1)
 		write(1, "Cannot read file.", 17);
 	else
 	{
-		file_bytes = read(file_descriptor, &host, 1);
+		file_bytes = read(file_descriptor, &host, 100);
 		while (file_bytes)
 		{
 			if (file_bytes == -1)
@@ -32,8 +32,8 @@ void	ft_display_file(char *filename)
 				write(1, "Cannot read file.", 17);
 				break ;
 			}
-			write(1, &host, 1);
-			file_bytes = read(file_descriptor, &host, 1);
+			write(1, &host, file_bytes);
+			file_bytes = read(file_descriptor, &host, 100);
 		}
 		close(file_descriptor);
 	}
