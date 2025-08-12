@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 10:59:53 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/13 00:12:47 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/13 00:48:20 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,16 @@ int	main(int argc, char *argv[])
 	int		*answer;
 	t_var	var;
 
-	if (arg_is_invalid(argc, argv[1]))
+	if (arg_is_invalid(argc, argv[1], &var))
 		write(STDOUT_FILENO, "Error\n", 6);
 	else
 	{
 		answer = init_answer_array(var.ans_size);
-		var.clue = parse_clue(argv[1]);
-		if (!clue || !answer)
+		var.clue = parse_clue(argv[1], var);
+		if (!var.clue || !answer)
 			write(STDOUT_FILENO, "Error\n", 6);
 		if (solve_puzzle(answer, var))
-			print_answer(answer);
+			print_answer(answer, var);
 		else
 			write(STDOUT_FILENO, "Error\n", 6);
 	}
@@ -53,17 +53,18 @@ static char	*init_answer_array(int ans_size)
 	return (answer);
 }
 
-static char	**parse_clue(char *argv, t_var var)
+char	**parse_clue(char *argv, t_var var)
 {
 	int	i;
 	int	row;
 	int	col;
 	int	**clue;
 
+	clue = (int **)malloc(var.row_size * sizeof(int *));
 	i = 0;
 	row = 0;
 	col = 0;
-	while (i < 31)
+	while (i < var.clue_len)
 	{
 		if (i % 2 == 0)
 			clue[row][col++] = argv[i] - '0';
@@ -74,20 +75,20 @@ static char	**parse_clue(char *argv, t_var var)
 			col = 0;
 		}
 	}
-	return ;
+	return (clue);
 }
 
-static void	print_answer(int *answer)
+static void	print_answer(int *answer, t_var var)
 {
 	int		i;
 	char	c;
 
 	i = 0;
-	while (i < 16)
+	while (i < var.ans_size)
 	{
 		c = answer[i] + '0';
 		write(1, &c, 1);
-		if (i == 3 || i == 7 || i == 11 || i == 15)
+		if ((i + 1) % var.row_size == 0)
 			write(1, "\n", 1);
 		else
 			write(1, " ", 1);

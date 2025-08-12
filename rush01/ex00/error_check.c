@@ -6,27 +6,29 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 15:53:36 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/13 00:12:43 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/13 00:47:20 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-// check if argv has 16 numbers (1-4) and only spaces in between
-int	arg_is_invalid(int argc, char *argv)
+int	arg_is_invalid(int argc, char *argv, t_var *var)
 {
-	int	index;
+	int	i;
 
-	if (argc != 2 || ft_strlen(argv) != 31)
-		return (1);
-	index = 0;
-	while (index < 31)
+	var->clue_len = ft_strlen(argv);
+	var->row_size = (var->clue_len + 1) / 8;
+	var->ans_size = var->row_size * var->row_size;
+	if (argc != 2 || (var->clue_len + 1) % 4)
+		return (true);
+	i = 0;
+	while (i < var->clue_len)
 	{
-		if (index % 2 && argv[index] != ' ')
-			return (1);
-		else if (index % 2 == 0 && (argv[index] < '1' || argv[index] > '4'))
-			return (1);
-		index++;
+		if (i % 2 && argv[i] != ' ')
+			return (true);
+		if (i % 2 == 0 && (argv[i] < '1' || argv[i] > var->row_size + '0'))
+			return (true);
+		i++;
 	}
-	return (0);
+	return (false);
 }
