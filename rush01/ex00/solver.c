@@ -6,65 +6,65 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 19:50:11 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/12 20:13:01 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/13 00:09:00 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-int	is_unique(int nbr, int *answer, int pos)
+static int	is_unique(t_var var, int *answer)
 {
 	int	i;
 
-	i = pos;
-	while (i >= (pos / 4 * 4))
+	i = var.pos;
+	while (i >= (var.pos / var.row_size * var.row_size))
 	{
-		if (nbr == answer[i])
-			return (0);
+		if (var.n == answer[i])
+			return (false);
 		i--;
 	}
-	i = pos;
+	i = var.pos;
 	while (i >= 0)
 	{
-		if (nbr == answer[i])
-			return (0);
-		i -= 4;
+		if (var.n == answer[i])
+			return (false);
+		i -= var.row_size;
 	}
-	return (1);
+	return (true);
 }
 
-void	check_clue(t_var *var, int *answer, int **clue)
+static void	check_clue(t_var *var, int *answer)
 {
-	if ((var->pos % var->line_size == 0 && row_is_bad(answer, clue, *var))
-		|| (var->pos > 12 && col_is_bad(answer, clue, *var)))
+	if ((var->pos % var->row_size == 0 && row_is_bad(answer, *var))
+		|| (var->pos > 12 && col_is_bad(answer, *var)))
 	{
-		(*pos)--;
-		while (*n > 4)
+		var->pos--;
+		while (var->n > 4)
 		{
-			answer[*pos] = 0;
-			*n = answer[(*pos)--] + 1;
+			answer[var->pos] = 0;
+			var->n = answer[var->pos--] + 1;
 		}
 	}
 	else
-		*n = 1;
+		var->n = 1;
 	return ;
 }
 
-int	solve_puzzle(int **clue, int *answer, t_var var)
+int	solve_puzzle(int *answer, t_var var)
 {
 	while (var.pos < var.ans_size)
 	{
 		var.n = 1;
-		while (var.n <= var.line_size && var.pos < var.ans_size)
+		while (var.n <= var.row_size && var.pos < var.ans_size)
 		{
-			if (is_unique(var.n, answer, var.pos))
+			if (is_unique(var, answer))
 			{
 				answer[var.pos++] = var.n++;
-				check_clue(&var, answer, clue);
+				check_clue(&var, answer);
 			}
 			else
 			{
-				while (++var.n > var.line_size)
+				while (++var.n > var.row_size)
 				{
 					if (var.pos == 0)
 						return (false);

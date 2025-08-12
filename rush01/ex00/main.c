@@ -6,18 +6,59 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 10:59:53 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/12 20:13:44 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/13 00:12:47 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-// parse argv in clue, fill up answer with zeroes
-void	parse_clue(int clue[4][4], char *argv)
+static char	*init_answer_array(int ans_size);
+static char	**parse_clue(char *argv, t_var var);
+static void	print_answer(int *answer);
+static void	free_clue(char **clue, int row_size);
+
+int	main(int argc, char *argv[])
+{
+	int		**clue;
+	int		*answer;
+	t_var	var;
+
+	if (arg_is_invalid(argc, argv[1]))
+		write(STDOUT_FILENO, "Error\n", 6);
+	else
+	{
+		answer = init_answer_array(var.ans_size);
+		var.clue = parse_clue(argv[1]);
+		if (!clue || !answer)
+			write(STDOUT_FILENO, "Error\n", 6);
+		if (solve_puzzle(answer, var))
+			print_answer(answer);
+		else
+			write(STDOUT_FILENO, "Error\n", 6);
+	}
+	return (free_clue(var), free(answer), EXIT_SUCCESS);
+}
+
+static char	*init_answer_array(int ans_size)
+{
+	int	i;
+	int	*answer;
+
+	answer = (int *)malloc(ans_size * sizeof(int));
+	if (!answer)
+		return (NULL);
+	i = 0;
+	while (i < ans_size)
+		answer[i++] = 0;
+	return (answer);
+}
+
+static char	**parse_clue(char *argv, t_var var)
 {
 	int	i;
 	int	row;
 	int	col;
+	int	**clue;
 
 	i = 0;
 	row = 0;
@@ -27,7 +68,7 @@ void	parse_clue(int clue[4][4], char *argv)
 		if (i % 2 == 0)
 			clue[row][col++] = argv[i] - '0';
 		i++;
-		if (col == 4)
+		if (col == var.row_size)
 		{
 			row++;
 			col = 0;
@@ -36,17 +77,7 @@ void	parse_clue(int clue[4][4], char *argv)
 	return ;
 }
 
-void	parse_answer(int *answer)
-{
-	int	i;
-
-	i = 0;
-	while (i < 16)
-		answer[i++] = 0;
-	return ;
-}
-
-void	print_answer(int *answer)
+static void	print_answer(int *answer)
 {
 	int		i;
 	char	c;
@@ -65,25 +96,13 @@ void	print_answer(int *answer)
 	return ;
 }
 
-int	main(int argc, char *argv[])
+static void	free_clue(t_var var)
 {
-	int		clue[4][4];
-	int		answer[16];
-	t_var	var;
+	int	row;
 
-	if (arg_is_invalid(argc, argv[1]))
-		write(1, "Error\n", 6);
-	else
-	{
-		clue = NULL;
-		answer = NULL;
-		parse_clue(clue, argv[1]);
-		parse_answer(answer);
-		var = (t_var){line_size = 4, ans_size = 16};
-		if (solve_puzzle(clue, answer, var))
-			print_answer(answer);
-		else
-			write(1, "Error\n", 6);
-	}
-	return (free_clue(clue), free(answer), EXIT_SUCCESS);
+	row = 0;
+	while (row < var.row_size)
+		free(var.clue[row++]);
+	free(var.clue);
+	return :
 }

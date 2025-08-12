@@ -1,32 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_check.c                                      :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/15 15:53:36 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/13 00:12:43 by kchiang          ###   ########.fr       */
+/*   Created: 2025/08/13 00:11:41 by kchiang           #+#    #+#             */
+/*   Updated: 2025/08/13 00:12:29 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
-
-// check if argv has 16 numbers (1-4) and only spaces in between
-int	arg_is_invalid(int argc, char *argv)
+int	ft_strlen(char *str)
 {
-	int	index;
+	int	len;
 
-	if (argc != 2 || ft_strlen(argv) != 31)
-		return (1);
-	index = 0;
-	while (index < 31)
-	{
-		if (index % 2 && argv[index] != ' ')
-			return (1);
-		else if (index % 2 == 0 && (argv[index] < '1' || argv[index] > '4'))
-			return (1);
-		index++;
-	}
-	return (0);
+	len = 0;
+	while (*str++)
+		len++;
+	return (len);
 }
