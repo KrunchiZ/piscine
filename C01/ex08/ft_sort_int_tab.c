@@ -6,12 +6,64 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 12:26:14 by kchiang           #+#    #+#             */
-/*   Updated: 2025/03/04 18:58:41 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/07/11 17:53:16 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include <stdio.h>
 
+static void	ft_swap(int *a, int *b)
+{
+	int	tmp;
+
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
+	return ;
+}
+
+static int	ft_partition(int *tab, int start, int end)
+{
+	int	pivot;
+	int	pvt_index;
+	int	i;
+	int	tmp;
+
+	pivot = tab[end];
+	i = 0;
+	pvt_index = 0;
+	while (i < end)
+	{
+		if (tab[i] <= pivot)
+		{
+			ft_swap(&tab[i], &tab[pvt_index]);
+			pvt_index++;
+		}
+		i++;
+	}
+	ft_swap(&tab[end], &tab[pvt_index]);
+	return (pvt_index);
+}
+
+static void	ft_quicksort(int *tab, int start, int end)
+{
+	int	pvt_index;
+
+	if (start < end)
+	{
+		pvt_index = ft_partition(tab, start, end);
+		ft_quicksort(tab, pvt_index + 1, end);
+		ft_quicksort(tab, start, pvt_index + 1);
+	}
+	return ;
+}
+
+void	ft_sort_int_tab(int *tab, int size)
+{
+	ft_quicksort(tab, 0, size - 1);
+	return ;
+}
+/*
 void	ft_sort_int_tab(int *tab, int size)
 {
 	int	temp;
@@ -34,7 +86,7 @@ void	ft_sort_int_tab(int *tab, int size)
 		}
 		round++;
 	}
-}
+}*/
 
 /*
 int	main(void)

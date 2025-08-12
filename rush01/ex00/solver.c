@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 19:50:11 by kchiang           #+#    #+#             */
-/*   Updated: 2025/04/16 03:30:27 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/12 20:13:01 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ int	is_unique(int nbr, int *answer, int pos)
 	return (1);
 }
 
-void	check_clue(int *n, int *pos, int *answer, int clue[4][4])
+void	check_clue(t_var *var, int *answer, int **clue)
 {
-	if ((*pos % 4 == 0 && row_is_bad(answer, clue, *pos))
-		|| (*pos > 12 && col_is_bad(answer, clue, *pos - 1)))
+	if ((var->pos % var->line_size == 0 && row_is_bad(answer, clue, *var))
+		|| (var->pos > 12 && col_is_bad(answer, clue, *var)))
 	{
 		(*pos)--;
 		while (*n > 4)
@@ -50,49 +50,29 @@ void	check_clue(int *n, int *pos, int *answer, int clue[4][4])
 	return ;
 }
 
-void	test_answer(int *answer)
+int	solve_puzzle(int **clue, int *answer, t_var var)
 {
-	int		i;
-	char	c;
-
-	i = 0;
-	while (i < 16)
+	while (var.pos < var.ans_size)
 	{
-		c = answer[i] + '0';
-		write(1, &c, 1);
-		if (i == 3 || i == 7 || i == 11 || i == 15)
-			write(1, "\n", 1);
-		else
-			write(1, " ", 1);
-		i++;
-	}
-	return ;
-}
-
-int	solve_puzzle(int clue[4][4], int *answer, int n, int pos)
-{
-	while (pos < 16)
-	{
-		n = 1;
-		while (n <= 4 && pos < 16)
+		var.n = 1;
+		while (var.n <= var.line_size && var.pos < var.ans_size)
 		{
-			if (is_unique(n, answer, pos))
+			if (is_unique(var.n, answer, var.pos))
 			{
-				answer[pos++] = n++;
-				check_clue(&n, &pos, answer, clue);
+				answer[var.pos++] = var.n++;
+				check_clue(&var, answer, clue);
 			}
 			else
 			{
-				n++;
-				while (n > 4)
+				while (++var.n > var.line_size)
 				{
-					if (pos == 0)
-						return (0);
-					answer[pos--] = 0;
-					n = answer[pos] + 1;
+					if (var.pos == 0)
+						return (false);
+					answer[var.pos--] = 0;
+					var.n = answer[var.pos] + 1;
 				}
 			}
 		}
 	}
-	return (1);
+	return (true);
 }
