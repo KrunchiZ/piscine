@@ -6,15 +6,15 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 10:59:53 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/13 00:56:43 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/13 01:26:04 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
 static char	*init_answer_array(int ans_size);
-static void	print_answer(int *answer);
-static void	free_clue(char **clue, int row_size);
+static void	print_answer(int *answer, t_var var);
+static void	free_clue(t_var var);
 
 int	main(int argc, char *argv[])
 {
