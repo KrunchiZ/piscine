@@ -6,11 +6,13 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 00:55:00 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/13 01:22:03 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/13 01:23:16 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
+
+static int	**init_clue(int	row_size);
 
 int	**parse_clue(char *argv, t_var var)
 {
