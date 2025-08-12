@@ -6,13 +6,13 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 10:59:53 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/13 01:26:04 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/13 01:27:15 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-static char	*init_answer_array(int ans_size);
+static int	*init_answer_array(int ans_size);
 static void	print_answer(int *answer, t_var var);
 static void	free_clue(t_var var);
 
@@ -37,7 +37,7 @@ int	main(int argc, char *argv[])
 	return (free_clue(var), free(answer), EXIT_SUCCESS);
 }
 
-static char	*init_answer_array(int ans_size)
+static int	*init_answer_array(int ans_size)
 {
 	int	i;
 	int	*answer;
