@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 00:19:01 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/13 00:10:29 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/13 02:51:55 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	top_is_bad(int *answer, int *clue, t_var var)
 		}
 		i--;
 	}
-	if (seen != clue[var.pos - (var.row_size * var.row_size - 1)])
+	if (seen != clue[var.pos - var.row_size * (var.row_size - 1)])
 		return (true);
 	return (false);
 }
@@ -53,7 +53,7 @@ int	bottom_is_bad(int *answer, int *clue, t_var var)
 		}
 		i++;
 	}
-	if (seen != clue[var.pos - (var.row_size * var.row_size - 1)])
+	if (seen != clue[var.pos - var.row_size * (var.row_size - 1)])
 		return (true);
 	return (false);
 }

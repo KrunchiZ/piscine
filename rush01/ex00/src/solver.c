@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 19:50:11 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/13 01:58:08 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/13 02:58:15 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	solve_puzzle(int *answer, t_var var)
 					if (var.pos == 0)
 						return (false);
 					answer[var.pos--] = 0;
-					var.n = answer[var.pos] + 1;
+					var.n = answer[var.pos];
 				}
 			}
 		}
