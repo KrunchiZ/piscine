@@ -6,11 +6,12 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 10:59:53 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/13 01:27:15 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/13 01:45:51 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
+#include <stdio.h>
 
 static int	*init_answer_array(int ans_size);
 static void	print_answer(int *answer, t_var var);
@@ -25,6 +26,7 @@ int	main(int argc, char *argv[])
 		write(STDOUT_FILENO, "Error\n", 6);
 	else
 	{
+		var.pos = 0;
 		answer = init_answer_array(var.ans_size);
 		var.clue = parse_clue(argv[1], var);
 		if (!var.clue || !answer)
