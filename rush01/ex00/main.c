@@ -6,20 +6,18 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 10:59:53 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/13 00:49:25 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/13 00:56:43 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
 static char	*init_answer_array(int ans_size);
-static char	**parse_clue(char *argv, t_var var);
 static void	print_answer(int *answer);
 static void	free_clue(char **clue, int row_size);
 
 int	main(int argc, char *argv[])
 {
-	int		**clue;
 	int		*answer;
 	t_var	var;
 
@@ -51,31 +49,6 @@ static char	*init_answer_array(int ans_size)
 	while (i < ans_size)
 		answer[i++] = 0;
 	return (answer);
-}
-
-char	**parse_clue(char *argv, t_var var)
-{
-	int	i;
-	int	row;
-	int	col;
-	int	**clue;
-
-	clue = (int **)malloc(var.row_size * sizeof(int *));
-	i = 0;
-	row = 0;
-	col = 0;
-	while (i < var.clue_len)
-	{
-		if (i % 2 == 0)
-			clue[row][col++] = argv[i] - '0';
-		i++;
-		if (col == var.row_size)
-		{
-			row++;
-			col = 0;
-		}
-	}
-	return (clue);
 }
 
 static void	print_answer(int *answer, t_var var)
