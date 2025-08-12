@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 10:59:53 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/13 00:48:20 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/13 00:49:25 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,5 +105,5 @@ static void	free_clue(t_var var)
 	while (row < var.row_size)
 		free(var.clue[row++]);
 	free(var.clue);
-	return :
+	return ;
 }
