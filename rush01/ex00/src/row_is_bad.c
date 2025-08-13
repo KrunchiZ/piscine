@@ -6,13 +6,13 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 00:19:01 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/13 00:09:46 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/13 10:33:25 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-int	left_is_bad(int *answer, int *clue, t_var var)
+static int	left_is_bad(int *answer, int *clue, t_var var)
 {
 	int	max;
 	int	seen;
@@ -35,7 +35,7 @@ int	left_is_bad(int *answer, int *clue, t_var var)
 	return (false);
 }
 
-int	right_is_bad(int *answer, int *clue, t_var var)
+static int	right_is_bad(int *answer, int *clue, t_var var)
 {
 	int	max;
 	int	seen;
@@ -63,6 +63,29 @@ int	row_is_bad(int *answer, t_var var)
 	if (left_is_bad(answer, var.clue[2], var))
 		return (true);
 	if (right_is_bad(answer, var.clue[3], var))
+		return (true);
+	return (false);
+}
+
+int	exceed_left_clue(int *answer, t_var var)
+{
+	int	max;
+	int	seen;
+	int	i;
+
+	seen = 0;
+	max = 0;
+	i = var.pos / var.row_size * var.row_size;
+	while (i < var.pos)
+	{
+		if (answer[i] > max)
+		{
+			seen++;
+			max = answer[i];
+		}
+		i++;
+	}
+	if (seen > var.clue[2][(var.pos - 1) / var.row_size])
 		return (true);
 	return (false);
 }
