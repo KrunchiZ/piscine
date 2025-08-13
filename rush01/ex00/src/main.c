@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 10:59:53 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/13 23:50:47 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/13 23:54:59 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ int	main(int argc, char *argv[])
 		else
 			write(STDOUT_FILENO, "Error\n", 6);
 	}
-	time(&end);
-	printf("\nruntime: %.0f seconds.\n", difftime(end, start));
+	printf("\n%dx%d runtime: %.0f seconds.\n",
+		var.row_size, var.row_size, difftime(time(&end), start));
 	return (free_clue(var), free(answer), EXIT_SUCCESS);
 }
 
