@@ -7,7 +7,7 @@ SRC		= \
 		  arg_is_invalid.c	ft_strlen.c		\
 		  parse_clue.c		solver.c		\
 		  col_is_bad.c		row_is_bad.c	\
-		  main.c
+		  check_clue.c		main.c
 
 .PHONY = all clean fclean re bonus
 
