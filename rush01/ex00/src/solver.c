@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 19:50:11 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/13 11:44:24 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/13 11:49:52 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ static void	check_clue(t_var *var, int *answer)
 		answer[--var->pos] = 0;
 		var->n = answer[--var->pos] + 1;
 	}
-	else if ((is_full_row(var->pos, var->row_size) && row_is_bad(answer, *var))
-		|| (is_full_col(var->pos, var->row_size) && col_is_bad(answer, *var)))
+	else if ((is_fullrow(var->pos, var->row_size) && row_is_bad(answer, *var))
+		|| (is_fullcol(var->pos, var->row_size) && col_is_bad(answer, *var)))
 	{
 		var->pos--;
 		while (var->n > var->row_size)

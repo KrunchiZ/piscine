@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 10:59:53 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/13 03:05:23 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/13 11:52:34 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,11 @@ static void	free_clue(t_var var);
 
 int	main(int argc, char *argv[])
 {
-	int		*answer;
 	t_var	var;
+	int		*answer;
 
+	var = (t_var){0};
+	answer = NULL;
 	if (arg_is_invalid(argc, argv[1], &var))
 		write(STDOUT_FILENO, "Error\n", 6);
 	else
