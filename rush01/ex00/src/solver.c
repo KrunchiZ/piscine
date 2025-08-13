@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 19:50:11 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/13 10:54:00 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/13 11:44:24 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static int	is_unique(t_var var, int *answer);
 static void	check_clue(t_var *var, int *answer);
-static int	is_full_row(int pos, int row_size);
-static int	is_full_col(int pos, int row_size);
+static int	is_fullrow(int pos, int row_size);
+static int	is_fullcol(int pos, int row_size);
 
 int	solve_puzzle(int *answer, t_var var)
 {
@@ -67,7 +67,9 @@ static int	is_unique(t_var var, int *answer)
 
 static void	check_clue(t_var *var, int *answer)
 {
-	if (!is_full_row(var->pos, var->row_size) && exceed_left_clue(answer, *var))
+	if ((!is_fullrow(var->pos, var->row_size) && exceed_left_clue(answer, *var))
+		|| (!is_fullcol(var->pos, var->row_size)
+		&& exceed_top_clue(answer, *var)))
 	{
 		answer[--var->pos] = 0;
 		var->n = answer[--var->pos] + 1;
@@ -87,12 +89,12 @@ static void	check_clue(t_var *var, int *answer)
 	return ;
 }
 
-static int	is_full_row(int pos, int row_size)
+static int	is_fullrow(int pos, int row_size)
 {
 	return (pos % row_size == 0);
 }
 
-static int	is_full_col(int pos, int row_size)
+static int	is_fullcol(int pos, int row_size)
 {
 	return (pos > row_size * (row_size - 1));
 }
