@@ -6,12 +6,13 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 10:59:53 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/13 11:52:34 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/13 23:50:47 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 #include <stdio.h>
+#include <time.h>
 
 static int	*init_answer_array(int ans_size);
 static void	print_answer(int *answer, t_var var);
@@ -19,9 +20,12 @@ static void	free_clue(t_var var);
 
 int	main(int argc, char *argv[])
 {
+	time_t	start;
+	time_t	end;
 	t_var	var;
 	int		*answer;
 
+	time(&start);
 	var = (t_var){0};
 	answer = NULL;
 	if (arg_is_invalid(argc, argv[1], &var))
@@ -38,6 +42,8 @@ int	main(int argc, char *argv[])
 		else
 			write(STDOUT_FILENO, "Error\n", 6);
 	}
+	time(&end);
+	printf("\nruntime: %.0f seconds.\n", difftime(end, start));
 	return (free_clue(var), free(answer), EXIT_SUCCESS);
 }
 
