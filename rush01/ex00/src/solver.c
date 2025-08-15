@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 19:50:11 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/13 13:56:26 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/15 11:14:10 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,23 @@ static int	is_unique(t_var var, int *answer);
 
 int	solve_puzzle(int *answer, t_var var)
 {
-	while (var.pos < var.ans_size)
+	var.n = 1;
+	while (var.n <= var.row_size + 1 && var.pos < var.ans_size)
 	{
-		var.n = 1;
-		while (var.n <= var.row_size && var.pos < var.ans_size)
+		if (var.n <= var.row_size && is_unique(var, answer))
 		{
-			if (is_unique(var, answer))
-			{
-				answer[var.pos++] = var.n++;
-				check_clue(&var, answer);
-			}
-			else
-			{
-				while (++var.n > var.row_size)
-				{
-					if (var.pos == 0)
-						return (false);
-					answer[var.pos--] = 0;
-					var.n = answer[var.pos];
-				}
-			}
+			answer[var.pos++] = var.n++;
+			check_clue(&var, answer);
 		}
+		else
+			var.n++;
+		if (var.n > var.row_size && var.pos > 0)
+		{
+			answer[var.pos--] = 0;
+			var.n = answer[var.pos] + 1;
+		}
+		if (var.n > var.row_size && var.pos == 0)
+			return (false);
 	}
 	return (true);
 }

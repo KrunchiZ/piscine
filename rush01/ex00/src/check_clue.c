@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 12:45:29 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/13 13:52:43 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/15 11:04:27 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,15 @@ static int	is_fullcol(int pos, int row_size);
 
 void	check_clue(t_var *var, int *answer)
 {
-	if (!is_fullrow(var->pos, var->row_size) && exceed_left_clue(answer, *var))
+	if ((!is_fullrow(var->pos, var->row_size) && exceed_left_clue(answer, *var))
+		|| (is_fullrow(var->pos, var->row_size) && row_is_bad(answer, *var)))
 	{
 		answer[--var->pos] = 0;
 		var->n = answer[--var->pos] + 1;
 	}
-	else if (var->pos > var->row_size && exceed_top_clue(answer, *var))
-		reset_one_row(var, answer);
-	else if ((is_fullrow(var->pos, var->row_size) && row_is_bad(answer, *var))
+	else if ((var->pos > var->row_size && exceed_top_clue(answer, *var))
 		|| (is_fullcol(var->pos, var->row_size) && col_is_bad(answer, *var)))
-	{
-		var->pos--;
-		while (var->n > var->row_size)
-		{
-			answer[var->pos] = 0;
-			var->n = answer[var->pos--] + 1;
-		}
-	}
+		reset_one_row(var, answer);
 	else
 		var->n = 1;
 	return ;
